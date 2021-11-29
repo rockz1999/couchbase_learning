@@ -26,10 +26,10 @@ class DatabaseManager {
     replicator = await Replicator.create(
       ReplicatorConfiguration(
         database: userDatabase,
-        authenticator:
-            BasicAuthenticator(username: 'atish_manala', password: 'ati0987sh'),
+        authenticator: BasicAuthenticator(
+            username: 'sync_gateway_test', password: 'ati0987sh'),
         target: UrlEndpoint(
-          Uri.parse('ws://10.0.2.2:4984/db'),
+          Uri.parse('ws://10.0.2.2:4984/sync_gateway_test_db'),
         ),
         continuous: true,
         replicatorType: ReplicatorType.pushAndPull,
