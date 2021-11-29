@@ -1,14 +1,14 @@
-import 'package:couchbash_login/providers/providers.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class LoginScreen extends HookConsumerWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends HookConsumerWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final usernameTED = useTextEditingController();
+    final nameTED = useTextEditingController();
+    final emailTED = useTextEditingController();
     final passTED = useTextEditingController();
 
     return Scaffold(
@@ -26,20 +26,35 @@ class LoginScreen extends HookConsumerWidget {
               height: 40,
             ),
             TextFormField(
-              controller: usernameTED,
+              controller: nameTED,
               decoration: const InputDecoration(
                 label: Text(
                   'UserName',
                 ),
                 contentPadding: EdgeInsets.symmetric(vertical: 8),
                 floatingLabelBehavior: FloatingLabelBehavior.auto,
-                hintText: 'Enter your email/number',
+                hintText: 'Enter your name',
               ),
             ),
             const SizedBox(
               height: 20,
             ),
             TextFormField(
+              controller: passTED,
+              decoration: const InputDecoration(
+                label: Text(
+                  'Email',
+                ),
+                contentPadding: EdgeInsets.symmetric(vertical: 8),
+                floatingLabelBehavior: FloatingLabelBehavior.auto,
+                hintText: 'Enter your email',
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              obscureText: true,
               controller: passTED,
               decoration: const InputDecoration(
                 label: Text(
@@ -59,18 +74,6 @@ class LoginScreen extends HookConsumerWidget {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {},
-                    child: const Text(
-                      'Login',
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed:
-                        ref.read(loginScreenProvider.notifier).goToRegister,
                     child: const Text(
                       'Register',
                     ),
