@@ -17,7 +17,9 @@ class DatabaseManager {
       CblFlutterCe.registerWith();
     }
     await CouchbaseLiteFlutter.init();
-    userDatabase = await Database.openAsync('user-pool-test');
+    userDatabase = await Database.openAsync(
+      'user-pool-test',
+    );
     // final replication = await Replicator.create(
     //   ReplicatorConfiguration(
     //     database: userDatabase,

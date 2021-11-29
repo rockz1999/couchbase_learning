@@ -22,4 +22,20 @@ class DatabaseQueries {
 
     return results.isNotEmpty ? results.last : null;
   }
+
+  void updateUserContent(UserModel user) async {
+    final doc = await DatabaseManager().userDatabase.document(user.email);
+    if (doc != null) {
+      final _multable = doc.toMutable();
+      _multable.setData(user.toJson());
+    }
+  }
+
+  Future<UserModel?> getUser(String id) async {
+    final doc = await DatabaseManager().userDatabase.document(id);
+    if (doc != null) {
+      return UserModel.fromJson(
+          doc.toPlainMap()['_'] as Map<String, dynamic>? ?? {});
+    }
+  }
 }

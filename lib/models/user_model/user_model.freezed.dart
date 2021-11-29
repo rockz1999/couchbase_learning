@@ -21,7 +21,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 class _$UserModelTearOff {
   const _$UserModelTearOff();
 
-  _UserModel call({String? email, String? password, String? name}) {
+  _UserModel call(
+      {required String email, required String password, required String name}) {
     return _UserModel(
       email: email,
       password: password,
@@ -39,9 +40,9 @@ const $UserModel = _$UserModelTearOff();
 
 /// @nodoc
 mixin _$UserModel {
-  String? get email => throw _privateConstructorUsedError;
-  String? get password => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +54,7 @@ mixin _$UserModel {
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
-  $Res call({String? email, String? password, String? name});
+  $Res call({String email, String password, String name});
 }
 
 /// @nodoc
@@ -74,15 +75,15 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       password: password == freezed
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -93,7 +94,7 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
           _UserModel value, $Res Function(_UserModel) then) =
       __$UserModelCopyWithImpl<$Res>;
   @override
-  $Res call({String? email, String? password, String? name});
+  $Res call({String email, String password, String name});
 }
 
 /// @nodoc
@@ -115,15 +116,15 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       password: password == freezed
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -131,17 +132,18 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserModel implements _UserModel {
-  const _$_UserModel({this.email, this.password, this.name});
+  const _$_UserModel(
+      {required this.email, required this.password, required this.name});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
 
   @override
-  final String? email;
+  final String email;
   @override
-  final String? password;
+  final String password;
   @override
-  final String? name;
+  final String name;
 
   @override
   String toString() {
@@ -174,18 +176,20 @@ class _$_UserModel implements _UserModel {
 }
 
 abstract class _UserModel implements UserModel {
-  const factory _UserModel({String? email, String? password, String? name}) =
-      _$_UserModel;
+  const factory _UserModel(
+      {required String email,
+      required String password,
+      required String name}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
 
   @override
-  String? get email;
+  String get email;
   @override
-  String? get password;
+  String get password;
   @override
-  String? get name;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$UserModelCopyWith<_UserModel> get copyWith =>
