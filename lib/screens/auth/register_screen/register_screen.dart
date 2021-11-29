@@ -1,3 +1,4 @@
+import 'package:couchbash_login/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -40,7 +41,7 @@ class RegisterScreen extends HookConsumerWidget {
               height: 20,
             ),
             TextFormField(
-              controller: passTED,
+              controller: emailTED,
               decoration: const InputDecoration(
                 label: Text(
                   'Email',
@@ -73,7 +74,12 @@ class RegisterScreen extends HookConsumerWidget {
               children: [
                 Expanded(
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () =>
+                        ref.read(registerScreenProvider.notifier).regsiter(
+                              nameTED.text,
+                              emailTED.text,
+                              passTED.text,
+                            ),
                     child: const Text(
                       'Register',
                     ),

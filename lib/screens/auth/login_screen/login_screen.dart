@@ -58,7 +58,9 @@ class LoginScreen extends HookConsumerWidget {
               children: [
                 Expanded(
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => ref
+                        .read(loginScreenProvider.notifier)
+                        .login(usernameTED.text, passTED.text),
                     child: const Text(
                       'Login',
                     ),
