@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cbl/cbl.dart';
 import 'package:couchbash_login/db/database_manager.dart';
+import 'package:couchbash_login/db/n1ql_query_functions.dart';
 import 'package:couchbash_login/models/user_model/user_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -30,6 +31,14 @@ class HomeStateNotifier extends StateNotifier<HomeScreenState> {
       if (mounted) {
         state = state.copyWith(isSaving: false);
       }
+    }
+  }
+
+  Future<UserModel?> init(String email) async {
+    final user = await DatabaseQueries().getUser(email);
+    if (user != null) {
+      state = state.copyWith(userModel: user);
+      return user;
     }
   }
 }

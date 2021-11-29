@@ -21,7 +21,9 @@ class LoginScreenStateNotifier extends StateNotifier<LoginScreenState> {
   void login(String email, String password) async {
     final results = await DatabaseQueries().getUserByEmailPass(email, password);
     if (results != null) {
-      Get.to(() => const HomeScreen());
+      Get.to(() => HomeScreen(
+            email: email,
+          ));
       log('Login Sucess, UserExists $email', name: 'LOGIN');
     } else {
       Get.snackbar('Log-in Error', 'No account associated to this user');

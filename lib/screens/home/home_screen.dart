@@ -4,19 +4,34 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeScreen extends HookConsumerWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+  const HomeScreen({Key? key, required this.email}) : super(key: key);
+  final String email;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final nameTED = useTextEditingController();
     final emailTED = useTextEditingController();
     final passTED = useTextEditingController();
     useEffect(() {
+      Future.delayed(Duration.zero, () async {
+        final res = await ref.read(homeScreenProvider.notifier).init(email);
+        if (res != null) {
+          nameTED.text = res.name;
+          emailTED.text = res.email;
+          passTED.text = res.password;
+        }
+      });
       return;
     }, const []);
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: Padding(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Colors.white,
+            Colors.white70,
+            Colors.lightGreen[50]!,
+            Colors.lightGreen[200]!
+          ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+        ),
         padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +97,7 @@ class HomeScreen extends HookConsumerWidget {
                           passTED.text,
                         ),
                     child: const Text(
-                      'Register',
+                      'SAVE',
                     ),
                   ),
                 ),

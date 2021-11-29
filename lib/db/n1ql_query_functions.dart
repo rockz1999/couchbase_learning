@@ -34,8 +34,7 @@ class DatabaseQueries {
   Future<UserModel?> getUser(String id) async {
     final doc = await DatabaseManager().userDatabase.document(id);
     if (doc != null) {
-      return UserModel.fromJson(
-          doc.toPlainMap()['_'] as Map<String, dynamic>? ?? {});
+      return UserModel.fromJson(doc.toPlainMap());
     }
   }
 }

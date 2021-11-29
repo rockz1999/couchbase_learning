@@ -21,8 +21,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 class _$UserModelTearOff {
   const _$UserModelTearOff();
 
-  _UserModel call(
-      {required String email, required String password, required String name}) {
+  _UserModel call({String email = '', String password = '', String name = ''}) {
     return _UserModel(
       email: email,
       password: password,
@@ -132,16 +131,18 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserModel implements _UserModel {
-  const _$_UserModel(
-      {required this.email, required this.password, required this.name});
+  const _$_UserModel({this.email = '', this.password = '', this.name = ''});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
 
+  @JsonKey(defaultValue: '')
   @override
   final String email;
+  @JsonKey(defaultValue: '')
   @override
   final String password;
+  @JsonKey(defaultValue: '')
   @override
   final String name;
 
@@ -176,10 +177,8 @@ class _$_UserModel implements _UserModel {
 }
 
 abstract class _UserModel implements UserModel {
-  const factory _UserModel(
-      {required String email,
-      required String password,
-      required String name}) = _$_UserModel;
+  const factory _UserModel({String email, String password, String name}) =
+      _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;

@@ -17,9 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$HomeScreenStateTearOff {
   const _$HomeScreenStateTearOff();
 
-  _Default call({bool isSaving = false}) {
+  _Default call({bool isSaving = false, UserModel? userModel}) {
     return _Default(
       isSaving: isSaving,
+      userModel: userModel,
     );
   }
 }
@@ -30,6 +31,7 @@ const $HomeScreenState = _$HomeScreenStateTearOff();
 /// @nodoc
 mixin _$HomeScreenState {
   bool get isSaving => throw _privateConstructorUsedError;
+  UserModel? get userModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeScreenStateCopyWith<HomeScreenState> get copyWith =>
@@ -41,7 +43,9 @@ abstract class $HomeScreenStateCopyWith<$Res> {
   factory $HomeScreenStateCopyWith(
           HomeScreenState value, $Res Function(HomeScreenState) then) =
       _$HomeScreenStateCopyWithImpl<$Res>;
-  $Res call({bool isSaving});
+  $Res call({bool isSaving, UserModel? userModel});
+
+  $UserModelCopyWith<$Res>? get userModel;
 }
 
 /// @nodoc
@@ -56,13 +60,29 @@ class _$HomeScreenStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isSaving = freezed,
+    Object? userModel = freezed,
   }) {
     return _then(_value.copyWith(
       isSaving: isSaving == freezed
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      userModel: userModel == freezed
+          ? _value.userModel
+          : userModel // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
     ));
+  }
+
+  @override
+  $UserModelCopyWith<$Res>? get userModel {
+    if (_value.userModel == null) {
+      return null;
+    }
+
+    return $UserModelCopyWith<$Res>(_value.userModel!, (value) {
+      return _then(_value.copyWith(userModel: value));
+    });
   }
 }
 
@@ -72,7 +92,10 @@ abstract class _$DefaultCopyWith<$Res>
   factory _$DefaultCopyWith(_Default value, $Res Function(_Default) then) =
       __$DefaultCopyWithImpl<$Res>;
   @override
-  $Res call({bool isSaving});
+  $Res call({bool isSaving, UserModel? userModel});
+
+  @override
+  $UserModelCopyWith<$Res>? get userModel;
 }
 
 /// @nodoc
@@ -87,12 +110,17 @@ class __$DefaultCopyWithImpl<$Res> extends _$HomeScreenStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isSaving = freezed,
+    Object? userModel = freezed,
   }) {
     return _then(_Default(
       isSaving: isSaving == freezed
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      userModel: userModel == freezed
+          ? _value.userModel
+          : userModel // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
     ));
   }
 }
@@ -100,15 +128,17 @@ class __$DefaultCopyWithImpl<$Res> extends _$HomeScreenStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Default implements _Default {
-  const _$_Default({this.isSaving = false});
+  const _$_Default({this.isSaving = false, this.userModel});
 
   @JsonKey(defaultValue: false)
   @override
   final bool isSaving;
+  @override
+  final UserModel? userModel;
 
   @override
   String toString() {
-    return 'HomeScreenState(isSaving: $isSaving)';
+    return 'HomeScreenState(isSaving: $isSaving, userModel: $userModel)';
   }
 
   @override
@@ -117,11 +147,13 @@ class _$_Default implements _Default {
         (other.runtimeType == runtimeType &&
             other is _Default &&
             (identical(other.isSaving, isSaving) ||
-                other.isSaving == isSaving));
+                other.isSaving == isSaving) &&
+            (identical(other.userModel, userModel) ||
+                other.userModel == userModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isSaving);
+  int get hashCode => Object.hash(runtimeType, isSaving, userModel);
 
   @JsonKey(ignore: true)
   @override
@@ -130,10 +162,12 @@ class _$_Default implements _Default {
 }
 
 abstract class _Default implements HomeScreenState {
-  const factory _Default({bool isSaving}) = _$_Default;
+  const factory _Default({bool isSaving, UserModel? userModel}) = _$_Default;
 
   @override
   bool get isSaving;
+  @override
+  UserModel? get userModel;
   @override
   @JsonKey(ignore: true)
   _$DefaultCopyWith<_Default> get copyWith =>
